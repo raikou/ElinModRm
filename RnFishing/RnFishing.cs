@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* 参考：
+ * https://docs.google.com/document/d/e/2PACX-1vSu2UfqCJl5095uOlem2Y3al20JotndDJcB3wjh82O2nQJ4yx8fC__IfUF6M_QRoWbb0Di9mdDnM3_Q/pub
+ * https://www.umayadia.com/cssample/sample0000/dnSampleGetPrevMethodName.htm
+ * */
+
+
+using System;
+using System.Runtime.CompilerServices;
 
 using BepInEx;
 using HarmonyLib;
@@ -6,100 +13,64 @@ using UnityEngine;
 
 namespace RnFishing
 {
+	static class Const
+	{
+		public const string className = "RnFishing";
+	}
+
+
 	//Mdo のヘッダー、mバージョン情報
-	[BepInPlugin("net.raireitei.rnfishing", "RnFishing", "1.0.0.0")]
+	[BepInPlugin("net.raireitei.rnfishing", Const.className, "1.0.0.0")]
 	public class RnFishing_Header : BaseUnityPlugin
 	{
 		private void Start() {
-			string name = GetType().Name;
-			Debug.Log(name + " Start");
-			new Harmony(name).PatchAll();
+			string className = Const.className;
+			Debug.Log(className + " Start");
+			new Harmony(className).PatchAll();
 		}
 	}
 
 	//Mod の基本処理
-	[HarmonyPatch]
+	[HarmonyPatch(typeof(AI_Fish), nameof(AI_Fish.OnProgressComplete))]
 	public class RnFishing
 	{
-		private int tmpEqBait = 0;
-		private int tmpStamina = 0;
+		
+		//一時保存
+		static private int tmpEqBait = 0;//餌
+		static private int tmpStats = 0;//スタミナ
+
+		static private Thing bait => EClass.player.eqBait;
+		static private Stats stats => EClass.player.chara.stamina;
 
 		//先行処理
-		[HarmonyPatch(typeof(AI_Fish), nameof(AI_Fish.OnProgressComplete))]
-		public void Prefix() {
-			tmpEqBait = EClass.player.eqBait.Num;
-			tmpStamina 
+		public static void Prefix() {
+			OutputLog(text: "start");
+			//値を保存
+			tmpEqBait = bait.Num;
+			tmpStats = stats.GetValue();
 		}
 
 		//後続処理
+		public static void Postfix(AI_Fish fish) {
+			OutputLog(text: "start");
+			//スタミナの差分
+			int a = Math.Abs(tmpStats);
+			int b = Math.Abs(stats.GetValue());
+			int diff =  (a > b)?  a - b : b - a;
 
-
-	}
-
-
-
-
-	//以下、参考メモ（他のMOD制作者様）
-	/*
-	[HarmonyPatch]
-	public class RnFishing
-    {
-		[HarmonyPrefix, HarmonyPatch(typeof(Map), nameof(Map.TrySmoothPick), new Type[] { typeof(Cell), typeof(Thing), typeof(Chara) })]
-		public static void TrySmoothPick(GrowSystem __instance, Cell cell, Thing t, Chara c) {
-			if (t?.category?.id=="seed" && t.Num < 5) {
-				t.SetNum(5);
-				c?.ModExp(286, 20);
+			//スタミナの消費を1とする
+			if ((tmpStats - 1) != stats.GetValue()) {
+				stats.Set(tmpStats);
+				stats.Mod(-1);
 			}
-			return ;
+
+			//餌の消費を増やす
+			bait.ModNum(-1 * diff);
+
 		}
-		[HarmonyPostfix, HarmonyPatch(typeof(GrowSystem), nameof(GrowSystem.TryPopSeed))]
-		public static void TryPopSeed(GrowSystem __instance, Thing __result, Chara c) {
-			if (__result == null && __instance.source.HasTag(CTAG.seed) && !EClass.player.isAutoFarming) {
-				__result = TraitSeed.MakeSeed(__instance.source, EClass._map.TryGetPlant(GrowSystem.cell));
-				if (__result?.Num < 5) {
-					__result.SetNum(5);
-				}
-				__instance.TryPick(GrowSystem.cell, __result, c);
-				c?.ModExp(286, 20);
-			}
-			if (__result?.Num < 5) {
-				__result.SetNum(5);
-			}
-			return;
-		}
-		[HarmonyPrefix, HarmonyPatch(typeof(TraitSeed), nameof(TraitSeed.MakeSeed), new Type[] { typeof(SourceObj.Row), typeof(PlantData) })]
-		public static void MakeSeed(TraitSeed __instance, SourceObj.Row obj, PlantData plant = null) {
-			if(plant != null) {
-				plant.water = 10000;
-			}
-			return;
-		}
-		[HarmonyPrefix, HarmonyPatch(typeof(TraitSeed), nameof(TraitSeed.LevelSeed))]
-		public static bool LevelSeed(TraitSeed __instance, Thing t, SourceObj.Row obj, int num) {
-			string trace = Environment.StackTrace;
-			if (trace.IndexOf("MakeSeed") < 0) {
-				return true;
-			}
-			num = EClass.pc.Evalue(286) - t.encLV;
-			for (int index = 0; index < num; ++index) {
-				if (obj == null || obj.objType == "crop") {
-					if (t.encLV == 0) {
-						CraftUtil.AddRandomFoodEnc(t);
-					} else {
-						Rand.SetSeed(t.c_seed);
-						CraftUtil.ModRandomFoodEnc(t);
-					}
-				}
 
-				t.ModEncLv(1);
-			}
-			return false;
-		}
-		[HarmonyPrefix, HarmonyPatch(typeof(TraitToolWaterCan), nameof(TraitToolWaterCan.MaxCharge), MethodType.Getter)]
-		public static bool MaxAlly(TraitToolWaterCan __instance, ref int __result) {
-			__result = __instance.owner.material.hardness*5+4;
-			return false;
+		private static void OutputLog([CallerMemberName] string callerMethodName = "", string text = "") {
+			Debug.Log(Const.className + ":" + callerMethodName + ":" + text );
 		}
 	}
-	*/
 }
