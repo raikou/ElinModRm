@@ -75,7 +75,7 @@ namespace RnFishing
 			}
 
 			//餌の消費を増やす（常に -1 されるので +1 する）
-			if (diff != 0) { //釣れなかったとき
+			if (diff != 0) {
 				int baitCost = -1 * diff + 1;
 				bait.ModNum(baitCost);
 			}
