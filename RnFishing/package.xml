@@ -2,13 +2,15 @@
 <Meta>
 	<title>RnFishing</title>
 	<id>rn_fishing</id>
-	<author>雷</author>
+	<author>rai</author>
 	<loadPriority>100</loadPriority>
 	<description>
     釣りの際に、スタミナと釣り餌の消費を逆転させます。
+    ※餌が最後の一つの時に複数釣れますが、餌は0以下にはなりません。（基本的なロジックを置き換える必要が出てきてしまうため未対応）
 
     Reverses the consumption of stamina and fishing bait when fishing.
+    *You can catch multiple fish when there is only one bait left, but the bait will not go below 0. (Not yet supported because it would require replacing the basic logic)
   </description>
-	<tags>Cheat,Item</tags>
+	<tags>Cheat,Balance,Utility</tags>
 	<version>0.23.46</version>
 </Meta>

@@ -5,6 +5,7 @@
 
 
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 using BepInEx;
@@ -25,13 +26,13 @@ namespace RnFishing
 	{
 		private void Start() {
 			string className = Const.className;
-			Debug.Log(className + " Start");
+			UnityEngine.Debug.Log(className + " Start");
 			new Harmony(className).PatchAll();
 		}
 	}
 
 	//Mod の基本処理
-	[HarmonyPatch(typeof(AI_Fish), nameof(AI_Fish.OnProgressComplete))]
+	[HarmonyPatch(typeof(AI_Fish.ProgressFish), nameof(AI_Fish.OnProgressComplete))]
 	public class RnFishing
 	{
 		
@@ -48,15 +49,24 @@ namespace RnFishing
 			//値を保存
 			tmpEqBait = bait.Num;
 			tmpStats = stats.GetValue();
+			OutputLog("処理前");
+			OutputLog("餌：" + tmpEqBait.ToString());
+			OutputLog("スタミナ：" + tmpStats.ToString());
 		}
 
 		//後続処理
-		public static void Postfix(AI_Fish fish) {
+		public static void Postfix() {
 			OutputLog(text: "start");
 			//スタミナの差分
 			int a = Math.Abs(tmpStats);
 			int b = Math.Abs(stats.GetValue());
 			int diff =  (a > b)?  a - b : b - a;
+			OutputLog("処理後");
+			OutputLog("スタミナ（処理前）：" + a.ToString());
+			OutputLog("スタミナ（処理後）：" + b.ToString());
+			OutputLog("スタミナ（差分）：" + diff.ToString());
+			OutputLog("--");
+
 
 			//スタミナの消費を1とする
 			if ((tmpStats - 1) != stats.GetValue()) {
@@ -64,13 +74,24 @@ namespace RnFishing
 				stats.Mod(-1);
 			}
 
-			//餌の消費を増やす
-			bait.ModNum(-1 * diff);
+			//餌の消費を増やす（常に -1 されるので +1 する）
+			if (diff != 0) { //釣れなかったとき
+				int baitCost = -1 * diff + 1;
+				bait.ModNum(baitCost);
+			}
+
+			OutputLog("処理後（最終値）");
+			OutputLog("餌：" + bait.Num.ToString());
+			OutputLog("スタミナ：" + stats.GetValue().ToString());
 
 		}
 
-		private static void OutputLog([CallerMemberName] string callerMethodName = "", string text = "") {
-			Debug.Log(Const.className + ":" + callerMethodName + ":" + text );
+		[Conditional("DEBUG")]
+		private static void OutputLog(string text, [CallerMemberName] string callerMethodName = "") {
+			string s = Const.className + ":" + callerMethodName + ":" + text;
+			UnityEngine.Debug.Log(s);
+			Msg.SayGod(s);
+
 		}
 	}
 }

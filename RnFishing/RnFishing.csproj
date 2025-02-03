@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\_bin\RnFishing_Debug_AnyCPU\</OutputPath>
+    <OutputPath>..\_bin\RnFishing\</OutputPath>
     <IntermediateOutputPath>..\_obj\$(MSBuildProjectName)_$(Configuration)_$(Platform)\</IntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
