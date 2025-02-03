@@ -12,17 +12,17 @@ using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 
-namespace RnFishing
+namespace RmFighing
 {
 	static class Const
 	{
-		public const string className = "RnFishing";
+		public const string className = "RmFighing";
 	}
 
 
 	//Mdo のヘッダー、mバージョン情報
-	[BepInPlugin("net.raireitei.rnfishing", Const.className, "1.0.0.0")]
-	public class RnFishing_Header : BaseUnityPlugin
+	[BepInPlugin("net.raireitei.RmFighing", Const.className, "1.0.0.0")]
+	public class RmFighing_Header : BaseUnityPlugin
 	{
 		private void Start() {
 			string className = Const.className;
@@ -33,7 +33,7 @@ namespace RnFishing
 
 	//Mod の基本処理
 	[HarmonyPatch(typeof(AI_Fish.ProgressFish), nameof(AI_Fish.OnProgressComplete))]
-	public class RnFishing
+	public class RmFishing
 	{
 		
 		//一時保存

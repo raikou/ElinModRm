@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Meta>
-	<title>RnFishing</title>
-	<id>rn_fishing</id>
+	<title>Rm Fishing</title>
+	<id>rm_fishing</id>
 	<author>rai</author>
 	<loadPriority>100</loadPriority>
 	<description>
     釣りの際に、スタミナと釣り餌の消費を逆転させます。
+    （スタミナ -1, 餌 釣れた数, その他 変化なし）
     ※餌が最後の一つの時に複数釣れますが、餌は0以下にはなりません。（基本的なロジックを置き換える必要が出てきてしまうため未対応）
 
     Reverses the consumption of stamina and fishing bait when fishing.
