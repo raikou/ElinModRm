@@ -12,7 +12,9 @@
     When fishing, it reverses the consumption of stamina and fishing bait.
     (Stamina -1, bait number caught, other unchanged)
     *You can catch multiple fish when you have only one bait left, but the bait will not go below 0. (Not yet supported as it would require replacing basic logic)
+
+    <a class="bb_link" href="https://github.com/raikou/ElinModRn" target="_blank" rel=" noopener"> ソースコード </a>
   </description>
 	<tags>Cheat,Balance,Utility</tags>
-	<version>0.23.46</version>
+	<version>0.23.81</version>
 </Meta>

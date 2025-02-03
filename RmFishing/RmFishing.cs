@@ -16,32 +16,23 @@ namespace RmFighing
 {
 	internal static class ModInfo
 	{
-		public const int Major = 0;
-		public const int Minor = 23;
-		public const int Patch = 74;
-		public const int Build = 1;
+		public const string Major = "0";
+		public const string Minor = "1";
+		public const string Patch = "0";
+		public const string Build = "0";
 
 		public const string Name = "RmFighing";
 		public const string Guid = "net.raireitei" + Name;
-		public const string Version = $"{Major}.{Minor}.{Patchy}";
-
-		public const string NameAndVersion = $"{Name} ver.{Version}";
+		public const string Version = Major + "." + Minor + "." + Patch + "." + Build;
 	}
 
-	static class Const
-	{
-		public const string className = "RmFighing";
-	}
-
-
-	//Mdo のヘッダー、mバージョン情報
-	[BepInPlugin("net.raireitei.RmFighing", Const.className, "1.0.0.0")]
+	//Mdo のヘッダー
+	[BepInPlugin(ModInfo.Guid, ModInfo.Name, ModInfo.Version)]
 	public class RmFighing_Header : BaseUnityPlugin
 	{
 		private void Start() {
-			string className = Const.className;
-			UnityEngine.Debug.Log(className + " Start");
-			new Harmony(className).PatchAll();
+			UnityEngine.Debug.Log(ModInfo.Name + " Start");
+			new Harmony(ModInfo.Name).PatchAll();
 		}
 	}
 
@@ -49,10 +40,9 @@ namespace RmFighing
 	[HarmonyPatch(typeof(AI_Fish.ProgressFish), nameof(AI_Fish.OnProgressComplete))]
 	public class RmFishing
 	{
-		
 		//一時保存
 		static private int tmpEqBait = 0;//餌
-		static private int tmpStats = 0;//スタミナ
+		static private int tmpStats = 0; //スタミナ
 
 		static private Thing bait => EClass.player.eqBait;
 		static private Stats stats => EClass.player.chara.stamina;
@@ -101,10 +91,9 @@ namespace RmFighing
 
 		[Conditional("DEBUG")]
 		private static void OutputLog(string text, [CallerMemberName] string callerMethodName = "") {
-			string s = Const.className + ":" + callerMethodName + ":" + text;
+			string s = ModInfo.Name + ":" + callerMethodName + ":" + text;
 			UnityEngine.Debug.Log(s);
 			Msg.SayGod(s);
-
 		}
 	}
 }
