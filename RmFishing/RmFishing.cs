@@ -1,6 +1,6 @@
 ﻿/* 参考：
  * https://docs.google.com/document/d/e/2PACX-1vSu2UfqCJl5095uOlem2Y3al20JotndDJcB3wjh82O2nQJ4yx8fC__IfUF6M_QRoWbb0Di9mdDnM3_Q/pub
- * https://www.umayadia.com/cssample/sample0000/dnSampleGetPrevMethodName.htm
+ * https://elin-modding-resources.github.io/Elin.Docs/
  * */
 
 
@@ -14,6 +14,20 @@ using UnityEngine;
 
 namespace RmFighing
 {
+	internal static class ModInfo
+	{
+		public const int Major = 0;
+		public const int Minor = 23;
+		public const int Patch = 74;
+		public const int Build = 1;
+
+		public const string Name = "RmFighing";
+		public const string Guid = "net.raireitei" + Name;
+		public const string Version = $"{Major}.{Minor}.{Patchy}";
+
+		public const string NameAndVersion = $"{Name} ver.{Version}";
+	}
+
 	static class Const
 	{
 		public const string className = "RmFighing";
@@ -45,7 +59,7 @@ namespace RmFighing
 
 		//先行処理
 		public static void Prefix() {
-			OutputLog(text: "start");
+			OutputLog("start");
 			//値を保存
 			tmpEqBait = bait.Num;
 			tmpStats = stats.GetValue();
@@ -62,7 +76,6 @@ namespace RmFighing
 			int b = Math.Abs(stats.GetValue());
 			int diff =  (a > b)?  a - b : b - a;
 			OutputLog("処理後");
-			OutputLog("スタミナ（処理前）：" + a.ToString());
 			OutputLog("スタミナ（処理後）：" + b.ToString());
 			OutputLog("スタミナ（差分）：" + diff.ToString());
 			OutputLog("--");

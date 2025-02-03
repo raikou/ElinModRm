@@ -9,8 +9,9 @@
     （スタミナ -1, 餌 釣れた数, その他 変化なし）
     ※餌が最後の一つの時に複数釣れますが、餌は0以下にはなりません。（基本的なロジックを置き換える必要が出てきてしまうため未対応）
 
-    Reverses the consumption of stamina and fishing bait when fishing.
-    *You can catch multiple fish when there is only one bait left, but the bait will not go below 0. (Not yet supported because it would require replacing the basic logic)
+    When fishing, it reverses the consumption of stamina and fishing bait.
+    (Stamina -1, bait number caught, other unchanged)
+    *You can catch multiple fish when you have only one bait left, but the bait will not go below 0. (Not yet supported as it would require replacing basic logic)
   </description>
 	<tags>Cheat,Balance,Utility</tags>
 	<version>0.23.46</version>
