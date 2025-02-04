@@ -12,7 +12,7 @@ using BepInEx;
 using HarmonyLib;
 using UnityEngine;
 
-namespace RmFighing
+namespace RmFishing
 {
 	internal static class ModInfo
 	{
@@ -21,14 +21,14 @@ namespace RmFighing
 		public const string Patch = "0";
 		public const string Build = "0";
 
-		public const string Name = "RmFighing";
+		public const string Name = "RmFishing";
 		public const string Guid = "net.raireitei" + Name;
 		public const string Version = Major + "." + Minor + "." + Patch + "." + Build;
 	}
 
 	//Mdo のヘッダー
 	[BepInPlugin(ModInfo.Guid, ModInfo.Name, ModInfo.Version)]
-	public class RmFighing_Header : BaseUnityPlugin
+	public class RmFishing_Header : BaseUnityPlugin
 	{
 		private void Start() {
 			UnityEngine.Debug.Log(ModInfo.Name + " Start");
