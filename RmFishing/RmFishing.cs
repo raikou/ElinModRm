@@ -60,7 +60,7 @@ namespace RmFishing
 
 		//後続処理
 		public static void Postfix() {
-			OutputLog(text: "start");
+			OutputLog("start");
 			//スタミナの差分
 			int a = Math.Abs(tmpStats);
 			int b = Math.Abs(stats.GetValue());
