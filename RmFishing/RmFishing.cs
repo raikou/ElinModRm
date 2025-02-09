@@ -16,10 +16,10 @@ namespace RmFishing
 {
 	internal static class ModInfo
 	{
-		public const string Major = "0";
-		public const string Minor = "1";
-		public const string Patch = "0";
-		public const string Build = "0";
+		private const string Major = "0";
+		private const string Minor = "1";
+		private const string Patch = "0";
+		private const string Build = "0";
 
 		public const string Name = "RmFishing";
 		public const string Guid = "net.raireitei" + Name;
@@ -28,7 +28,7 @@ namespace RmFishing
 
 	//Mdo のヘッダー
 	[BepInPlugin(ModInfo.Guid, ModInfo.Name, ModInfo.Version)]
-	public class RmFishing_Header : BaseUnityPlugin
+	public class RmFishingHeader : BaseUnityPlugin
 	{
 		private void Start() {
 			UnityEngine.Debug.Log(ModInfo.Name + " Start");
@@ -41,29 +41,29 @@ namespace RmFishing
 	public class RmFishing
 	{
 		//一時保存
-		static private int tmpEqBait = 0;//餌
-		static private int tmpStats = 0; //スタミナ
+		private static int _tmpEqBait = 0;//餌
+		private static int _tmpStats = 0; //スタミナ
 
-		static private Thing bait => EClass.player.eqBait;
-		static private Stats stats => EClass.player.chara.stamina;
+		private static Thing Bait => EClass.player.eqBait;
+		private static Stats Stats => EClass.player.chara.stamina;
 
 		//先行処理
 		public static void Prefix() {
 			OutputLog("start");
 			//値を保存
-			tmpEqBait = bait.Num;
-			tmpStats = stats.GetValue();
+			_tmpEqBait = Bait.Num;
+			_tmpStats = Stats.GetValue();
 			OutputLog("処理前");
-			OutputLog("餌：" + tmpEqBait.ToString());
-			OutputLog("スタミナ：" + tmpStats.ToString());
+			OutputLog("餌：" + _tmpEqBait.ToString());
+			OutputLog("スタミナ：" + _tmpStats.ToString());
 		}
 
 		//後続処理
 		public static void Postfix() {
 			OutputLog("start");
 			//スタミナの差分
-			int a = Math.Abs(tmpStats);
-			int b = Math.Abs(stats.GetValue());
+			int a = Math.Abs(_tmpStats);
+			int b = Math.Abs(Stats.GetValue());
 			int diff =  (a > b)?  a - b : b - a;
 			OutputLog("処理後");
 			OutputLog("スタミナ（処理後）：" + b.ToString());
@@ -72,20 +72,20 @@ namespace RmFishing
 
 
 			//スタミナの消費を1とする
-			if ((tmpStats - 1) != stats.GetValue()) {
-				stats.Set(tmpStats);
-				stats.Mod(-1);
+			if ((_tmpStats - 1) != Stats.GetValue()) {
+				Stats.Set(_tmpStats);
+				Stats.Mod(-1);
 			}
 
 			//餌の消費を増やす（常に -1 されるので +1 する）
 			if (diff != 0) {
 				int baitCost = -1 * diff + 1;
-				bait.ModNum(baitCost);
+				Bait.ModNum(baitCost);
 			}
 
 			OutputLog("処理後（最終値）");
-			OutputLog("餌：" + bait.Num.ToString());
-			OutputLog("スタミナ：" + stats.GetValue().ToString());
+			OutputLog("餌：" + Bait.Num.ToString());
+			OutputLog("スタミナ：" + Stats.GetValue().ToString());
 
 		}
 
