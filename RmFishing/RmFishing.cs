@@ -28,7 +28,7 @@ namespace RmFishing
 
 	//Mdo のヘッダー
 	[BepInPlugin(ModInfo.Guid, ModInfo.Name, ModInfo.Version)]
-	public class RmFishingHeader : BaseUnityPlugin
+	public class ModHeader : BaseUnityPlugin
 	{
 		private void Start() {
 			UnityEngine.Debug.Log(ModInfo.Name + " Start");
@@ -36,7 +36,7 @@ namespace RmFishing
 		}
 	}
 
-	//Mod の基本処理
+	#region OnProgressComplete
 	[HarmonyPatch(typeof(AI_Fish.ProgressFish), nameof(AI_Fish.OnProgressComplete))]
 	public class RmFishing
 	{
@@ -64,7 +64,7 @@ namespace RmFishing
 			//スタミナの差分
 			int a = Math.Abs(_tmpStats);
 			int b = Math.Abs(Stats.GetValue());
-			int diff =  (a > b)?  a - b : b - a;
+			int diff = (a > b) ? a - b : b - a;
 			OutputLog("処理後");
 			OutputLog("スタミナ（処理後）：" + b.ToString());
 			OutputLog("スタミナ（差分）：" + diff.ToString());
@@ -96,4 +96,6 @@ namespace RmFishing
 			Msg.SayGod(s);
 		}
 	}
+
+	#endregion
 }
