@@ -10,8 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 		readme.md = readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RmModManager", "RmModManager\RmModManager.csproj", "{AFBF3C19-622C-4B3F-B7CA-C4AE784E9BD0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,10 +20,6 @@ Global
 		{9F977510-E2E2-4EFB-9D11-1EC043986D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F977510-E2E2-4EFB-9D11-1EC043986D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F977510-E2E2-4EFB-9D11-1EC043986D5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFBF3C19-622C-4B3F-B7CA-C4AE784E9BD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFBF3C19-622C-4B3F-B7CA-C4AE784E9BD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFBF3C19-622C-4B3F-B7CA-C4AE784E9BD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFBF3C19-622C-4B3F-B7CA-C4AE784E9BD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
