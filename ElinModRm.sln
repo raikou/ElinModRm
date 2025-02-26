@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RmModManagerWPF", "RmModManagerWPF\RmModManagerWPF.csproj", "{C5B9DA9E-5BFA-4806-B19F-E83B62011D00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTools", "..\..\RTools\RTools\RTools.csproj", "{7D6DC4FE-CBB5-06F8-6EC7-AFE8DA7BA898}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{9F977510-E2E2-4EFB-9D11-1EC043986D5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F977510-E2E2-4EFB-9D11-1EC043986D5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F977510-E2E2-4EFB-9D11-1EC043986D5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B9DA9E-5BFA-4806-B19F-E83B62011D00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B9DA9E-5BFA-4806-B19F-E83B62011D00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B9DA9E-5BFA-4806-B19F-E83B62011D00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B9DA9E-5BFA-4806-B19F-E83B62011D00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D6DC4FE-CBB5-06F8-6EC7-AFE8DA7BA898}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D6DC4FE-CBB5-06F8-6EC7-AFE8DA7BA898}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D6DC4FE-CBB5-06F8-6EC7-AFE8DA7BA898}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D6DC4FE-CBB5-06F8-6EC7-AFE8DA7BA898}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
