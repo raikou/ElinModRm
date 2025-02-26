@@ -3,7 +3,7 @@
 using EvilMask.Elin.ModOptions;
 using EvilMask.Elin.ModOptions.UI;
 
-using RmFishing.Util;
+using RmModManager.Util;
 
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Reflection;
 
 using UnityEngine;
 
-namespace RmFishing.UI.ModOptions
+namespace RmModManager.UI.ModOptions
 {
 	public static class ModOptions
 	{

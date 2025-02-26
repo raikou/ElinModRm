@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 
-using RmFishing.UI.ModOptions;
-using RmFishing.Util;
+using RmModManager.UI.ModOptions;
+using RmModManager.Util;
 
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace RmFishing.Patches
+namespace RmModManager.Patches
 {
     [HarmonyPatch(typeof(AI_Fish.ProgressFish), nameof(AI_Fish.OnProgressComplete))]
     public class OnProgressCompletePatch

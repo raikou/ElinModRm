@@ -11,13 +11,13 @@ using System.Runtime.CompilerServices;
 using BepInEx;
 using HarmonyLib;
 
-using RmFishing.Patches;
-using RmFishing.UI.ModOptions;
-using RmFishing.Util;
+using RmModManager.Patches;
+using RmModManager.UI.ModOptions;
+using RmModManager.Util;
 
 using UnityEngine;
 
-namespace RmFishing
+namespace RmModManager
 {
 	public static class ModInfo
 	{

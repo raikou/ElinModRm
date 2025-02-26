@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RmFishing
+namespace RmModManager
 {
     internal static class ModConfig
     {
