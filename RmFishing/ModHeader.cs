@@ -23,8 +23,8 @@ namespace RmFishing
 	{
 		private const string Major = "0";
 		private const string Minor = "1";
-		private const string Patch = "0";
-		private const string Build = "1";
+		private const string Patch = "1";
+		private const string Build = "0";
 
 		public const string Name = "RmFishing";
 		public const string Guid = "net.raireitei." + Name;
