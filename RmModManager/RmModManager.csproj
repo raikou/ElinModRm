@@ -59,4 +59,10 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="preview.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
