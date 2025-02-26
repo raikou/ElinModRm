@@ -4,29 +4,21 @@
  * */
 
 
-using System;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-
 using BepInEx;
 using HarmonyLib;
 
 using RmModManager.Patches;
-using RmModManager.UI.ModOptions;
-using RmModManager.Util;
-
-using UnityEngine;
 
 namespace RmModManager
 {
 	public static class ModInfo
 	{
 		private const string Major = "0";
-		private const string Minor = "1";
+		private const string Minor = "0";
 		private const string Patch = "1";
 		private const string Build = "0";
 
-		public const string Name = "RmFishing";
+		public const string Name = "RmModManager";
 		public const string Guid = "net.raireitei." + Name;
 		public const string Version = Major + "." + Minor + "." + Patch + "." + Build;
 	}
@@ -36,22 +28,10 @@ namespace RmModManager
 	public class ModHeader : BaseUnityPlugin
 	{
 		private void Awake() {
-			Harmony.CreateAndPatchAll(typeof(OnProgressCompletePatch), ModInfo.Guid);
-			ModConfig.LoadConfig(this.Config);
+			Harmony.CreateAndPatchAll(typeof(OnInitPatch), ModInfo.Guid);
 		}
 
 		private void Start() {
-			try {
-				if (ModOptions.CheckAndRegisterModOptions()) {
-					CommonUtil.OutputLog(this.Config.ConfigFilePath);
-					ModConfig.LoadConfig(this.Config);
-
-					CommonUtil.OutputLog("Config_cost:" + ModConfig.FishingCost.Value);
-
-					ModOptions.SetLayout();
-				}
-			} catch (Exception e) {
-			}
 		}
 	}
 }
