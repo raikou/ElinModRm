@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 
 using RmFishing.UI.ModOptions;
+using RmFishing.Util;
 
 using System;
 using System.Collections.Generic;
@@ -19,38 +20,35 @@ namespace RmFishing.Patches
 
 	    private static Thing Bait => EClass.player.eqBait;
 	    private static Stats Stats => EClass.player.chara.stamina;
+	    private static ModConfig.FishingCostEnum FishingCost => (ModConfig.FishingCostEnum)ModConfig.FishingCost.Value;
 
-	    //ModOptions 登録チェック
-	    private ModOptions modOptions = null;
-	    private void Awake() {
-		    modOptions = new ModOptions();
-		    if (modOptions != null) {
-
-		    }
-	    }
 
 	    //先行処理
 	    public static void Prefix() {
-		    OutputLog("start");
+			if(FishingCost == ModConfig.FishingCostEnum.DefVal) return;
+
+		    CommonUtil.OutputLog("start");
 		    //値を保存
 		    _tmpEqBait = Bait.Num;
 		    _tmpStats = Stats.GetValue();
-		    OutputLog("処理前");
-		    OutputLog("餌：" + _tmpEqBait.ToString());
-		    OutputLog("スタミナ：" + _tmpStats.ToString());
+		    CommonUtil.OutputLog("処理前");
+		    CommonUtil.OutputLog("餌：" + _tmpEqBait.ToString());
+		    CommonUtil.OutputLog("スタミナ：" + _tmpStats.ToString());
 	    }
 
 	    //後続処理
 	    public static void Postfix() {
-		    OutputLog("start");
+		    if (FishingCost == ModConfig.FishingCostEnum.DefVal) return;
+
+		    CommonUtil.OutputLog("start");
 		    //スタミナの差分
 		    int a = Math.Abs(_tmpStats);
 		    int b = Math.Abs(Stats.GetValue());
 		    int diff = (a > b) ? a - b : b - a;
-		    OutputLog("処理後");
-		    OutputLog("スタミナ（処理後）：" + b.ToString());
-		    OutputLog("スタミナ（差分）：" + diff.ToString());
-		    OutputLog("--");
+		    CommonUtil.OutputLog("処理後");
+		    CommonUtil.OutputLog("スタミナ（処理後）：" + b.ToString());
+		    CommonUtil.OutputLog("スタミナ（差分）：" + diff.ToString());
+		    CommonUtil.OutputLog("--");
 
 
 		    //スタミナの消費を1とする
@@ -59,24 +57,19 @@ namespace RmFishing.Patches
 			    Stats.Mod(-1);
 		    }
 
-		    //餌の消費を増やす（常に -1 されるので +1 する）
-		    if (diff != 0) {
-			    int baitCost = -1 * diff + 1;
-			    Bait.ModNum(baitCost);
+
+		    if (FishingCost != ModConfig.FishingCostEnum.AllOne) {
+			    //餌の消費を増やす（常に -1 されるので +1 する）
+			    if (diff != 0) {
+				    int baitCost = -1 * diff + 1;
+				    Bait.ModNum(baitCost);
+			    }
 		    }
 
-		    OutputLog("処理後（最終値）");
-		    OutputLog("餌：" + Bait.Num.ToString());
-		    OutputLog("スタミナ：" + Stats.GetValue().ToString());
+			CommonUtil.OutputLog("処理後（最終値）");
+		    CommonUtil.OutputLog("餌：" + Bait.Num.ToString());
+		    CommonUtil.OutputLog("スタミナ：" + Stats.GetValue().ToString());
 
-	    }
-
-	    [Conditional("DEBUG")]
-	    private static void OutputLog(string text, [CallerMemberName] string callerMethodName = "") {
-		    string s = ModInfo.Name + ":" + callerMethodName + ":" + text;
-		    UnityEngine.Debug.Log(s);
-		    Msg.SayGod(s);
 	    }
     }
-
 }

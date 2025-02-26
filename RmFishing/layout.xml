@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ConfigLayoutSchema.xsd">
+  <hlayout id="hlayout01">
+    <vlayout id="vlayout01" border="true">
+      <title>mod.tooltip</title>
+
+      <one_choice id="fishingCostDropDown" type="dropdown" value="0">
+        <choice>
+          <contentId>fishingCost01</contentId>
+        </choice>
+        <choice>
+          <contentId>fishingCost02</contentId>
+        </choice>
+        <choice>
+          <contentId>fishingCost03</contentId>
+        </choice>
+      </one_choice>
+
+    </vlayout>
+
+  </hlayout>
+</config>

@@ -11,13 +11,15 @@ using System.Runtime.CompilerServices;
 using BepInEx;
 using HarmonyLib;
 
+using RmFishing.Patches;
 using RmFishing.UI.ModOptions;
+using RmFishing.Util;
 
 using UnityEngine;
 
 namespace RmFishing
 {
-	internal static class ModInfo
+	public static class ModInfo
 	{
 		private const string Major = "0";
 		private const string Minor = "1";
@@ -25,7 +27,7 @@ namespace RmFishing
 		private const string Build = "1";
 
 		public const string Name = "RmFishing";
-		public const string Guid = "net.raireitei" + Name;
+		public const string Guid = "net.raireitei." + Name;
 		public const string Version = Major + "." + Minor + "." + Patch + "." + Build;
 	}
 
@@ -33,9 +35,23 @@ namespace RmFishing
 	[BepInPlugin(ModInfo.Guid, ModInfo.Name, ModInfo.Version)]
 	public class ModHeader : BaseUnityPlugin
 	{
+		private void Awake() {
+			Harmony.CreateAndPatchAll(typeof(OnProgressCompletePatch), ModInfo.Guid);
+			ModConfig.LoadConfig(this.Config);
+		}
+
 		private void Start() {
-			UnityEngine.Debug.Log(ModInfo.Name + " Start");
-			new Harmony(ModInfo.Name).PatchAll();
+			try {
+				if (ModOptions.CheckAndRegisterModOptions()) {
+					CommonUtil.OutputLog(this.Config.ConfigFilePath);
+					ModConfig.LoadConfig(this.Config);
+
+					CommonUtil.OutputLog("Config_cost:" + ModConfig.FishingCost.Value);
+
+					ModOptions.SetLayout();
+				}
+			} catch (Exception e) {
+			}
 		}
 	}
 }
