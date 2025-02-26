@@ -5,13 +5,23 @@
 	<author>rai</author>
 	<loadPriority>100</loadPriority>
 	<description>
-    釣りの際に、スタミナと釣り餌の消費を逆転させます。
-    （スタミナ -1, 餌 釣れた数, その他 変化なし）
-    ※餌が最後の一つの時に複数釣れますが、餌は0以下にはなりません。（基本的なロジックを置き換える必要が出てきてしまうため未対応）
+    釣りの際の消費コストの変更をします。（デフォルトは Type 1）
+    Type 1:スタミナと釣り餌の消費を逆転
+    Type 2:スタミナと釣り餌の消費を「1」にする
+　　
+  　※Type1の場合、餌が最後の一つの時に複数釣れますが、餌は0以下にはなりません。（基本的なロジックを置き換える必要が出てきてしまうため未対応）
+    ※ModOptions(https://steamcommunity.com/sharedfiles/filedetails/?id=3381182341)を利用するとゲーム内で設定を変更出来ます。
+    　利用しない場合は設定ファイルを修正する必要があります。　
 
-    When fishing, it reverses the consumption of stamina and fishing bait.
-    (Stamina -1, bait number caught, other unchanged)
-    *You can catch multiple fish when you have only one bait left, but the bait will not go below 0. (Not yet supported as it would require replacing basic logic)
+　　※日本語以外は自動翻訳を利用しています
+  
+    Changes the cost consumed when fishing. (Default is Type 1)
+    Type 1: Reverses the consumption of stamina and fishing bait
+    Type 2: Sets the consumption of stamina and fishing bait to "1"
+    
+    *In the case of Type 1, you can catch multiple fish when there is only one bait left, but the bait will not go below 0. (Not supported because it would require replacing basic logic)
+    *You can change the settings in-game by using ModOptions(https://steamcommunity.com/sharedfiles/filedetails/?id=3381182341).
+     If you do not use this, you will need to modify the settings file.
 
     <a class="bb_link" href="https://github.com/raikou/ElinModRn" target="_blank" rel=" noopener"> ソースコード </a>
   </description>

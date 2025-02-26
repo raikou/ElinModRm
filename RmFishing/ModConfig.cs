@@ -23,7 +23,7 @@ namespace RmFishing
 
 		internal static void LoadConfig(ConfigFile config) {
 			FishingCost = config.Bind<int>(ModInfo.Guid
-				, nameof(FishingCost), FishingCostEnum.DefVal.GetHashCode(), "");
+				, nameof(FishingCost), FishingCostEnum.ChangeVal.GetHashCode(), "");
 		}
     }
 }
