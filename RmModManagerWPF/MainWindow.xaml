@@ -25,18 +25,19 @@
         <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="NoWrap" Text="Sample2" VerticalAlignment="Center"/>
         <Button  Grid.Row="0" Grid.Column="3" Content="参照" Margin="2,2,2,2"/>
         <Button  Grid.Row="1" Grid.Column="3" Content="参照" Margin="2,2,2,2"/>
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="24"></RowDefinition>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <DataGrid HorizontalAlignment="Center" Height="362" Grid.Row="1" VerticalAlignment="Top" Width="300" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        </Grid>
-        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
-        </Grid>
+        <!--<DockPanel Grid.Row="2" Grid.ColumnSpan="*" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24"></RowDefinition>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <DataGrid HorizontalAlignment="Center" Height="362" Grid.Row="1" VerticalAlignment="Top" Width="300" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                <GridSplitter HorizontalAlignment="Left" Height="100" Margin="219,169,0,0" Grid.Row="1" VerticalAlignment="Top" Width="5"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+        </DockPanel>-->
     </Grid>
 </Window>

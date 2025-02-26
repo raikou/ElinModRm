@@ -15,13 +15,14 @@ namespace RmModManager.Util
 {
     public static class CommonUtil
     {
-	    public static Settings Settings;
+	    private static Settings _settings = new Settings();
+	    public static Settings Settings {
+		    get => _settings.Load();
+		    set => _settings.Save(_settings);
+	    }
 
 	    private static readonly string DesktopPath = System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 	    private const string FileName = "RmModManager.log";
-	    private static XmlUsing xmlUsing = new XmlUsing();
-	    private static string dirPath = Directory.GetCurrentDirectory();
-	    private static string fileName = "rm_mod_manager_settings.xml";
 
 		private static StreamWriter _sw = new StreamWriter( Path.Combine(DesktopPath, FileName));
 
@@ -43,18 +44,6 @@ namespace RmModManager.Util
 		    }
 	    }
 
-	    public static void Save(Settings settings) {
-		    xmlUsing.Save(settings, Path.Combine(dirPath, fileName));
-	    }
-
-	    public static void Load() {
-		    var path = Path.Combine(dirPath, fileName);
-		    if (File.Exists(path)) {
-			    xmlUsing.Load(out Settings, path);
-		    } else {
-				Save(new Settings());
-		    }
-		}
 
 	}
 }

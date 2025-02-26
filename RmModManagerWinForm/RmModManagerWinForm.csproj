@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\RTools\RTools\RTools.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="preview.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
