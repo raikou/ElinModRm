@@ -7,6 +7,36 @@
         mc:Ignorable="d"
         Title="RmModManager" Height="450" Width="800">
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="160" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Content="Elin.exe Path" HorizontalAlignment="Right" Width="80"/>
+        <Label Grid.Row="1" Content="Mod Path" HorizontalAlignment="Right" Width="80"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="NoWrap" Text="Sample1" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextWrapping="NoWrap" Text="Sample2" VerticalAlignment="Center"/>
+        <Button  Grid.Row="0" Grid.Column="3" Content="参照" Margin="2,2,2,2"/>
+        <Button  Grid.Row="1" Grid.Column="3" Content="参照" Margin="2,2,2,2"/>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"></RowDefinition>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DataGrid HorizontalAlignment="Center" Height="362" Grid.Row="1" VerticalAlignment="Top" Width="300" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </Window>
