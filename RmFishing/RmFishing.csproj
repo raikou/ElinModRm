@@ -68,4 +68,8 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /Y /E /I &quot;$(TargetDir)*&quot; &quot;F:\Steam\steamapps\common\Elin\Package\Mod_RmFishing\&quot;" />
+  </Target>
+
 </Project>
