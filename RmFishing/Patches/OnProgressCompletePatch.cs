@@ -53,10 +53,13 @@ namespace RmModManager.Patches
 				Start.ShowData("");
 				CommonUtil.OutputLogLinesSingle();
 				CommonUtil.OutputSimpleLog("owner:");
-				Start.ShowData("");
+				SystemChange.ShowData("");
 				CommonUtil.OutputLogLinesSingle();
 				CommonUtil.OutputSimpleLog("EClass.player:");
-				Start.ShowData("");
+				Diff.ShowData("");
+				CommonUtil.OutputLogLinesDouble();
+				CommonUtil.OutputLogLinesSingle();
+				Result.ShowData("");
 				CommonUtil.OutputLogLinesDouble();
 			}
 		}
@@ -78,16 +81,12 @@ namespace RmModManager.Patches
 
 			[Conditional("DEBUG")]
 			public void LogShow(string mess) {
-				try {
-					string message = "対象：" + _name + "餌：" + Bait.ToString() + ", スタミナ" + Stamina.ToString();
-					CommonUtil.OutputSimpleLog(mess + message);
-				} catch (Exception) {
-				}
+				ShowData(mess);
 			}
 			[Conditional("DEBUG")]
 			public void ShowData(string mess) {
 				try {
-					string message = "餌：" + Bait.ToString() + ", スタミナ" + Stamina.ToString();
+					string message = "対象：" + _name + "餌：" + Bait.ToString() + ", スタミナ" + Stamina.ToString();
 					CommonUtil.OutputSimpleLog(mess + ", " + message);
 				} catch (Exception) {
 				}
@@ -124,8 +123,8 @@ namespace RmModManager.Patches
 			_datasHistory.SystemChange = new BaitAndStamina(__instance.owner);
 			_datasHistory.SystemChange.LogShow("修正後：");
 
-
-			_datasHistory.DispExitParams();
+			_datasHistory.DispLog();
+			//_datasHistory.DispExitParams();
 		}
 	}
 }
