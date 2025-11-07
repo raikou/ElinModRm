@@ -38,7 +38,7 @@ namespace RmModManager.UI.ModOptions
 		/// </summary>
 		/// <returns>Modの有無</returns>
 		public static bool CheckAndRegisterModOptions() {
-			CommonUtil.OutputLog("Start");
+			CommonUtil.OutputShowNameLog("Start");
 
 			try {
 				RegisterModOptions();
@@ -49,17 +49,17 @@ namespace RmModManager.UI.ModOptions
 						pluginList.Add(plugin);
 					}
 				}
-				CommonUtil.OutputLog("Start2");
+				CommonUtil.OutputShowNameLog("Start2");
 
 				var modOption = pluginList.FirstOrDefault(obj => obj.Info.Metadata.GUID == ModOptionsGuid);
 				if (modOption == null) return false;
 
 				return modOption != null;
 			} catch (Exception e) {
-				CommonUtil.OutputLog(e);
+				CommonUtil.OutputErrorLog(e);
 			}
 
-			CommonUtil.OutputLog("End");
+			CommonUtil.OutputShowNameLog("End");
 			return false;
 		}
 
@@ -68,7 +68,7 @@ namespace RmModManager.UI.ModOptions
 		/// </summary>
 		public static void SetLayout() {
 			try {
-				CommonUtil.OutputLog("Start");
+				CommonUtil.OutputShowNameLog("Start");
 
 				//レイアウトの設定情報読み込み
 				LoadLayoutSettings();
@@ -84,9 +84,9 @@ namespace RmModManager.UI.ModOptions
 
 
 			} catch (Exception e) {
-				CommonUtil.OutputLog(e);
+				CommonUtil.OutputErrorLog(e);
 			}
-			CommonUtil.OutputLog("End");
+			CommonUtil.OutputShowNameLog("End");
 
 			return;
 		}
@@ -96,8 +96,8 @@ namespace RmModManager.UI.ModOptions
 			if (directoryName != null) {
 				var xml = Path.Combine(directoryName, "layout.xml");
 				var translations = Path.Combine(directoryName, "translations.xlsx");
-				CommonUtil.OutputLog("xml:" + xml);
-				CommonUtil.OutputLog("translations:" + translations);
+				CommonUtil.OutputShowNameLog("xml:" + xml);
+				CommonUtil.OutputShowNameLog("translations:" + translations);
 
 				if (File.Exists(xml)) {
 					using (StreamReader streamReader = new StreamReader(xml)) {
@@ -109,7 +109,7 @@ namespace RmModManager.UI.ModOptions
 					_modOptionController.SetTranslationsFromXslx(translations);
 				}
 			} else {
-				CommonUtil.OutputLog("NoDirectory");
+				CommonUtil.OutputShowNameLog("NoDirectory");
 			}
 
 		}

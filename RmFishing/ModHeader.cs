@@ -23,7 +23,7 @@ namespace RmModManager
 	{
 		private const string Major = "0";
 		private const string Minor = "1";
-		private const string Patch = "1";
+		private const string Patch = "2";
 		private const string Build = "0";
 
 		public const string Name = "RmFishing";
@@ -43,10 +43,10 @@ namespace RmModManager
 		private void Start() {
 			try {
 				if (ModOptions.CheckAndRegisterModOptions()) {
-					CommonUtil.OutputLog(this.Config.ConfigFilePath);
+					CommonUtil.OutputShowNameLog(this.Config.ConfigFilePath);
 					ModConfig.LoadConfig(this.Config);
 
-					CommonUtil.OutputLog("Config_cost:" + ModConfig.FishingCost.Value);
+					CommonUtil.OutputShowNameLog("Config_cost:" + ModConfig.FishingCost.Value);
 
 					ModOptions.SetLayout();
 				}
