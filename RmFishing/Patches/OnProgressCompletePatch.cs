@@ -100,10 +100,8 @@ namespace RmModManager.Patches
 
 		//先行処理
 		public static void Prefix(AI_Fish.ProgressFish __instance) {
-			CommonUtil.OutputShowNameLog("test:start");
 			_datasHistory.Start = new BaitAndStamina(__instance.owner);
-			_datasHistory.Start.LogDisp("");
-			CommonUtil.OutputShowNameLog("test:end");
+			_datasHistory.Start.LogDisp("処理前：");
 
 			if (FishingCost == ModConfig.FishingCostEnum.DefVal) return;
 
@@ -118,7 +116,10 @@ namespace RmModManager.Patches
 		}
 
 		//後続処理
-		public static void Postfix() {
+		public static void Postfix(AI_Fish.ProgressFish __instance) {
+			_datasHistory.Start = new BaitAndStamina(__instance.owner);
+			_datasHistory.Start.LogDisp("処理後：");
+
 			if (FishingCost == ModConfig.FishingCostEnum.DefVal) return;
 
 			//   CommonUtil.OutputShowNameLog("start");
