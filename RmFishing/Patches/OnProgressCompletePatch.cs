@@ -28,36 +28,17 @@ namespace RmModManager.Patches
 			public BaitAndStamina Diff;
 			public BaitAndStamina Result;
 
-			//[Conditional("DEBUG")]
+			[Conditional("DEBUG")]
 			public void DispLog() {
 				try {
 					CommonUtil.OutputLogLinesDouble();
-					Start.LogShow("start: ");
-					SystemChange.LogShow("systemChange: ");
-					Diff.LogShow("diff: ");
-					Result.LogShow("result: ");
+					Start.LogShow("start:");
+					SystemChange.LogShow("systemChange:");
+					Diff.LogShow("diff:");
+					Result.LogShow("result:");
 					CommonUtil.OutputLogLinesDouble();
 				} catch (Exception) {
 				}
-			}
-
-			[Conditional("DEBUG")]
-			public void DispExitParams() {
-				CommonUtil.OutputLogLinesDouble();
-				CommonUtil.OutputSimpleLog("システム判断：" + (IsPC ? "プレイヤー" : "Other"));
-				CommonUtil.OutputLogLinesSingle();
-				CommonUtil.OutputSimpleLog("AI_Fish:");
-				Start.ShowData("");
-				CommonUtil.OutputLogLinesSingle();
-				CommonUtil.OutputSimpleLog("owner:");
-				SystemChange.ShowData("");
-				CommonUtil.OutputLogLinesSingle();
-				CommonUtil.OutputSimpleLog("EClass.player:");
-				Diff.ShowData("");
-				CommonUtil.OutputLogLinesDouble();
-				CommonUtil.OutputLogLinesSingle();
-				Result.ShowData("");
-				CommonUtil.OutputLogLinesDouble();
 			}
 		}
 
