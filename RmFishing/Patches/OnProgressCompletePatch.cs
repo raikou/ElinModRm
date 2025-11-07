@@ -32,14 +32,11 @@ namespace RmModManager.Patches
 			public void DispLog() {
 				try {
 					CommonUtil.OutputLogLinesDouble();
-
 					Start.LogShow("start: ");
 					SystemChange.LogShow("systemChange: ");
 					Diff.LogShow("diff: ");
 					Result.LogShow("result: ");
 					CommonUtil.OutputLogLinesDouble();
-
-
 				} catch (Exception) {
 				}
 			}
