@@ -9,12 +9,17 @@ namespace RmModManager.Util
     public static class CommonUtil
     {
 	    private const string RmMod = "";// "RmMod:";
-	    private const string DoubleLine = "===========================================";
+	    private const string LineDouble = "===========================================";
+	    private const string LineSingle = "-------------------------------------------";
 
 
 		[Conditional("DEBUG")]
-		public static void OutputLogDoubleLines() {
-		    OutputSimpleLog(DoubleLine);
+		public static void OutputLogLinesDouble() {
+		    OutputSimpleLog(LineDouble);
+	    }
+		[Conditional("DEBUG")]
+		public static void OutputLogLinesSingle() {
+		    OutputSimpleLog(LineSingle);
 	    }
 
 		[Conditional("DEBUG")]
