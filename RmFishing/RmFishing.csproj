@@ -40,7 +40,6 @@
     </Reference>
     <Reference Include="Elin">
       <HintPath>..\..\..\..\Steam\steamapps\common\Elin\Elin_Data\Managed\Elin.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="ModOptions">
       <HintPath>..\..\..\..\Steam\steamapps\common\Elin\Package\Mod_ModOptions\ModOptions.dll</HintPath>

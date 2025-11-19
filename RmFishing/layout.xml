@@ -14,6 +14,12 @@
         <choice>
           <contentId>fishingCost03</contentId>
         </choice>
+        <choice>
+          <contentId>fishingCost04</contentId>
+        </choice>
+        <choice>
+          <contentId>fishingCost05</contentId>
+        </choice>
       </one_choice>
 
     </vlayout>

@@ -5,26 +5,41 @@
 	<author>rai</author>
 	<loadPriority>100</loadPriority>
 	<description>
+
+    釣りの際の消費コストの変更をします。（デフォルトは Type 1）
+    （廃止）Type 1:スタミナと釣り餌の消費を逆転
+    Type 2:スタミナと釣り餌の消費を「1」にする（EA 23.237の仕様ではスタミナの消費を1にするのみ）
+    Type 3:スタミナの消費を「1」にする
+    Type 4:釣り餌の消費を「1」にする（EA 23.237の仕様では餌の消費は1なので無意味）
+
+    Changes the cost of fishing. (Default is Type 1)
+    (Obsolete) Type 1: Reverses stamina and bait consumption.
+    Type 2: Sets stamina and bait consumption to "1" (EA 23.237 only sets stamina consumption to "1")
+    Type 3: Sets stamina consumption to "1"
+    Type 4: Sets bait consumption to "1" (EA 23.237 only sets bait consumption to "1" so this is meaningless)
+
+    ※以下は仕様変更前の挙動です
+
     釣りの際の消費コストの変更をします。（デフォルトは Type 1）
     Type 1:スタミナと釣り餌の消費を逆転
     Type 2:スタミナと釣り餌の消費を「1」にする
-　　
-  　※Type1の場合、餌が最後の一つの時に複数釣れますが、餌は0以下にはなりません。（基本的なロジックを置き換える必要が出てきてしまうため未対応）
+    　　
+    　※Type1の場合、餌が最後の一つの時に複数釣れますが、餌は0以下にはなりません。（基本的なロジックを置き換える必要が出てきてしまうため未対応）
     ※ModOptions(https://steamcommunity.com/sharedfiles/filedetails/?id=3381182341)を利用するとゲーム内で設定を変更出来ます。
     　利用しない場合は設定ファイルを修正する必要があります。　
 
-　　※日本語以外は自動翻訳を利用しています
-  
+    　　※日本語以外は自動翻訳を利用しています
+
     Changes the cost consumed when fishing. (Default is Type 1)
     Type 1: Reverses the consumption of stamina and fishing bait
     Type 2: Sets the consumption of stamina and fishing bait to "1"
-    
+
     *In the case of Type 1, you can catch multiple fish when there is only one bait left, but the bait will not go below 0. (Not supported because it would require replacing basic logic)
     *You can change the settings in-game by using ModOptions(https://steamcommunity.com/sharedfiles/filedetails/?id=3381182341).
-     If you do not use this, you will need to modify the settings file.
+    If you do not use this, you will need to modify the settings file.
 
     <a class="bb_link" href="https://github.com/raikou/ElinModRn" target="_blank" rel=" noopener"> ソースコード </a>
   </description>
 	<tags>Cheat,Balance,Utility</tags>
-	<version>0.23.92</version>
+	<version>0.23.237</version>
 </Meta>

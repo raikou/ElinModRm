@@ -4,20 +4,17 @@
  * */
 
 
-using System;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-
 using BepInEx;
+
 using HarmonyLib;
 
-using RmModManager.Patches;
-using RmModManager.UI.ModOptions;
-using RmModManager.Util;
+using RmFishing.Patches;
+using RmFishing.UI.ModOptions;
+using RmFishing.Util;
 
-using UnityEngine;
+using System;
 
-namespace RmModManager
+namespace RmFishing
 {
 	public static class ModInfo
 	{

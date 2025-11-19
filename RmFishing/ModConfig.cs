@@ -1,17 +1,15 @@
 ﻿using BepInEx.Configuration;
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RmModManager
+namespace RmFishing
 {
     internal static class ModConfig
     {
 		public enum FishingCostEnum{
-			DefVal = 0,
-			ChangeVal = 1,
-			AllOne = 2
+			DefaultCost = 0,
+			ChangeCost = 1,
+			BothOne = 2,
+			StaminaIsOne = 3,
+			BaitIsOne = 4
 		}
 
 		/// <summary>
@@ -23,7 +21,7 @@ namespace RmModManager
 
 		internal static void LoadConfig(ConfigFile config) {
 			FishingCost = config.Bind<int>(ModInfo.Guid
-				, nameof(FishingCost), FishingCostEnum.ChangeVal.GetHashCode(), "");
+				, nameof(FishingCost), FishingCostEnum.ChangeCost.GetHashCode(), "");
 		}
     }
 }
